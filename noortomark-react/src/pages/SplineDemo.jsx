@@ -27,13 +27,19 @@ export default function SplineDemo() {
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <h3 className="text-xl font-semibold text-white mb-2">Spotlight Effects</h3>
-              <p className="text-gray-300">Multiple spotlight implementations for dynamic lighting effects</p>
+              <p className="text-gray-300">Interactive mouse-following spotlight with framer-motion</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
               <h3 className="text-xl font-semibold text-white mb-2">Card Components</h3>
               <p className="text-gray-300">shadcn/ui card components with custom styling</p>
             </div>
           </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="text-gray-400 text-sm">
+            💡 <strong>Tip:</strong> Replace the Spline scene URL in <code className="bg-gray-800 px-2 py-1 rounded">demo.tsx</code> with your own Spline design URL
+          </p>
         </div>
       </div>
     </div>
