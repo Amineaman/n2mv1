@@ -87,25 +87,29 @@ function Marketing3DObjects() {
   useFrame(({ clock }) => {
     const time = clock.elapsedTime
 
-    // Camera animation
+    // Camera animation - more dynamic
     if (cameraRef.current) {
-      cameraRef.current.position.x = Math.sin(time * 0.3) * 2
-      cameraRef.current.position.y = Math.cos(time * 0.4) * 1.5
+      cameraRef.current.position.x = Math.sin(time * 0.3) * 3
+      cameraRef.current.position.y = Math.cos(time * 0.4) * 2
+      cameraRef.current.position.z = Math.sin(time * 0.2) * 2 - 4
       cameraRef.current.rotation.y = time * 0.2
+      cameraRef.current.rotation.x = Math.sin(time * 0.1) * 0.1
     }
 
-    // ADS animation
+    // ADS animation - billboard effect
     if (adsRef.current) {
-      adsRef.current.position.x = Math.cos(time * 0.5) * 2.5
-      adsRef.current.position.z = Math.sin(time * 0.3) * 1
-      adsRef.current.rotation.x = time * 0.1
+      adsRef.current.position.x = Math.cos(time * 0.5) * 3.5
+      adsRef.current.position.z = Math.sin(time * 0.3) * 1.5 - 3
+      adsRef.current.rotation.x = Math.sin(time * 0.2) * 0.1
+      adsRef.current.rotation.y = time * 0.1
     }
 
-    // Copywriting animation
+    // Copywriting animation - book flipping effect
     if (copyRef.current) {
-      copyRef.current.position.z = Math.sin(time * 0.6) * 1.5
-      copyRef.current.position.y = Math.cos(time * 0.4) * 1
-      copyRef.current.rotation.z = time * 0.15
+      copyRef.current.position.z = Math.sin(time * 0.6) * 2 - 5
+      copyRef.current.position.y = Math.cos(time * 0.4) * 1.5 - 1
+      copyRef.current.rotation.z = Math.sin(time * 0.3) * 0.2
+      copyRef.current.rotation.y = time * 0.15
     }
   })
 
@@ -117,17 +121,33 @@ function Marketing3DObjects() {
           {/* Camera body */}
           <mesh>
             <boxGeometry args={[1, 0.6, 0.4]} />
-            <meshStandardMaterial color="#ff6b6b" metalness={0.8} roughness={0.2} />
+            <meshStandardMaterial 
+              color="#ff6b6b" 
+              metalness={0.8} 
+              roughness={0.2}
+              emissive="#ff6b6b"
+              emissiveIntensity={0.2}
+            />
           </mesh>
           {/* Lens */}
           <mesh position={[0.3, 0, 0.25]}>
             <cylinderGeometry args={[0.2, 0.2, 0.1, 16]} />
-            <meshStandardMaterial color="#000000" metalness={0.9} roughness={0.1} />
+            <meshStandardMaterial 
+              color="#000000" 
+              metalness={0.9} 
+              roughness={0.1}
+              emissive="#333333"
+              emissiveIntensity={0.1}
+            />
           </mesh>
           {/* Flash */}
           <mesh position={[-0.3, 0.2, 0.25]}>
             <boxGeometry args={[0.1, 0.1, 0.05]} />
-            <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} />
+            <meshStandardMaterial 
+              color="#ffffff" 
+              emissive="#ffffff" 
+              emissiveIntensity={0.8}
+            />
           </mesh>
           <Text
             position={[0, -1, 0]}
@@ -135,9 +155,12 @@ function Marketing3DObjects() {
             color="#ff6b6b"
             anchorX="center"
             anchorY="middle"
+            fontWeight="bold"
           >
             CAMÉRA
           </Text>
+          {/* Camera glow effect */}
+          <pointLight position={[0, 0, 0]} intensity={0.5} color="#ff6b6b" distance={3} />
         </group>
       </Float>
 
@@ -147,17 +170,31 @@ function Marketing3DObjects() {
           {/* Billboard/Sign */}
           <mesh>
             <boxGeometry args={[1.5, 1, 0.1]} />
-            <meshStandardMaterial color="#30e3ca" metalness={0.6} roughness={0.4} />
+            <meshStandardMaterial 
+              color="#30e3ca" 
+              metalness={0.6} 
+              roughness={0.4}
+              emissive="#30e3ca"
+              emissiveIntensity={0.1}
+            />
           </mesh>
           {/* Content area */}
           <mesh position={[0, 0, 0.06]}>
             <planeGeometry args={[1.3, 0.8]} />
-            <meshStandardMaterial color="#1a1a2e" emissive="#30e3ca" emissiveIntensity={0.1} />
+            <meshStandardMaterial 
+              color="#1a1a2e" 
+              emissive="#30e3ca" 
+              emissiveIntensity={0.2}
+            />
           </mesh>
           {/* Support pole */}
           <mesh position={[0, -0.8, 0]}>
             <cylinderGeometry args={[0.05, 0.05, 1.6, 8]} />
-            <meshStandardMaterial color="#666666" metalness={0.7} roughness={0.3} />
+            <meshStandardMaterial 
+              color="#666666" 
+              metalness={0.7} 
+              roughness={0.3}
+            />
           </mesh>
           <Text
             position={[0, -1.5, 0]}
@@ -165,9 +202,12 @@ function Marketing3DObjects() {
             color="#30e3ca"
             anchorX="center"
             anchorY="middle"
+            fontWeight="bold"
           >
             ADS
           </Text>
+          {/* ADS glow effect */}
+          <pointLight position={[0, 0, 0]} intensity={0.4} color="#30e3ca" distance={3} />
         </group>
       </Float>
 
@@ -177,7 +217,13 @@ function Marketing3DObjects() {
           {/* Paper/Book */}
           <mesh>
             <boxGeometry args={[1.2, 1.6, 0.1]} />
-            <meshStandardMaterial color="#7c3aed" metalness={0.5} roughness={0.5} />
+            <meshStandardMaterial 
+              color="#7c3aed" 
+              metalness={0.5} 
+              roughness={0.5}
+              emissive="#7c3aed"
+              emissiveIntensity={0.15}
+            />
           </mesh>
           {/* Pages */}
           <mesh position={[0, 0, 0.02]}>
@@ -196,7 +242,11 @@ function Marketing3DObjects() {
           {/* Pen tip */}
           <mesh position={[0.8, 0.9, 0.1]} rotation={[0, 0, Math.PI / 4]}>
             <coneGeometry args={[0.02, 0.1, 6]} />
-            <meshStandardMaterial color="#ff6b6b" />
+            <meshStandardMaterial 
+              color="#ff6b6b"
+              emissive="#ff6b6b"
+              emissiveIntensity={0.3}
+            />
           </mesh>
           <Text
             position={[0, -1.2, 0]}
@@ -204,9 +254,12 @@ function Marketing3DObjects() {
             color="#7c3aed"
             anchorX="center"
             anchorY="middle"
+            fontWeight="bold"
           >
             COPYWRITING
           </Text>
+          {/* Copywriting glow effect */}
+          <pointLight position={[0, 0, 0]} intensity={0.3} color="#7c3aed" distance={3} />
         </group>
       </Float>
     </group>
@@ -216,11 +269,24 @@ function Marketing3DObjects() {
 function Lights() {
   return (
     <>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.4} />
       <pointLight position={[10, 10, 10]} intensity={1.5} color="#ff6b6b" />
       <pointLight position={[-10, -10, 10]} intensity={1} color="#30e3ca" />
       <pointLight position={[0, 0, 20]} intensity={0.8} />
       <pointLight position={[0, 10, -10]} intensity={1.2} color="#7c3aed" />
+      <spotLight 
+        position={[0, 15, 0]} 
+        angle={0.3} 
+        penumbra={1} 
+        intensity={1} 
+        color="#ffffff" 
+        castShadow 
+      />
+      <directionalLight 
+        position={[5, 5, 5]} 
+        intensity={0.5} 
+        color="#ffffff" 
+      />
     </>
   )
 }
@@ -230,6 +296,7 @@ export default function Hero3D() {
     <div className="hero3d">
       <Canvas className="canvas-hero">
         <PerspectiveCamera position={[0, 0, 8]} fov={75} />
+        <fog attach="fog" args={['#070b1a', 10, 25]} />
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         <Lights />
         <RotatingBox />

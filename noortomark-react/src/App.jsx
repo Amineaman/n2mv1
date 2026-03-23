@@ -8,6 +8,7 @@ import Pricing from './pages/Pricing'
 import Team from './pages/Team'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
+import SplineDemo from './pages/SplineDemo'
 import './App.css'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/spline-demo" element={<SplineDemo />} />
         </Routes>
       </Layout>
     </Router>

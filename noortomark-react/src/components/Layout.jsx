@@ -34,6 +34,7 @@ export default function Layout({ children }) {
             <li><Link to="/pricing" className="nav-link" onClick={() => handleNavClick('/pricing')}>Tarifs</Link></li>
             <li><Link to="/team" className="nav-link" onClick={() => handleNavClick('/team')}>Équipe</Link></li>
             <li><Link to="/blog" className="nav-link" onClick={() => handleNavClick('/blog')}>Blog</Link></li>
+            <li><Link to="/spline-demo" className="nav-link" onClick={() => handleNavClick('/spline-demo')}>3D Demo</Link></li>
             <li><Link to="/contact" className="nav-link btn-nav" onClick={() => handleNavClick('/contact')}>Contact</Link></li>
           </ul>
         </div>
