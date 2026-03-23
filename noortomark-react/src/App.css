@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+  background: #070b1a;
+  color: #f8fafc;
+  line-height: 1.6;
+}
+
+#root {
+  width: 100%;
+}
+
